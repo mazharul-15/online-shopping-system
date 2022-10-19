@@ -104,7 +104,7 @@
                                                 <?php foreach($sub_cat_arr as $sub_list) { 
                                                     if($list['id'] == $sub_list['categories_id']) { ?>
                                                         <li>
-                                                            <a href="product.php?id=<?php echo $sub_list['id'];?>"> <?php echo $sub_list['sub_categories']; ?></a>
+                                                            <a href="sub_categories.php?id=<?php echo $sub_list['id'];?>"> <?php echo $sub_list['sub_categories']; ?></a>
                                                         </li>
                                                     <?php
                                                     }
@@ -131,7 +131,7 @@
                                                 <?php foreach($sub_cat_arr as $sub_list) { 
                                                     if($list['id'] == $sub_list['categories_id']) { ?>
                                                         <li>
-                                                            <a href="product.php?id=<?php echo $sub_list['id'];?>"> <?php echo $sub_list['sub_categories']; ?></a>
+                                                            <a href="sub_categories.php?id=<?php echo $sub_list['id'];?>"> <?php echo $sub_list['sub_categories']; ?></a>
                                                         </li>
                                                     <?php
                                                     }
