@@ -6,6 +6,7 @@
     if(isset($_GET['status'])) {
         $status = get_safe_value($con, $_GET['status']);
         $id = get_safe_value($con, $_GET['id']);
+        $image = get_safe_value($con, $_GET['image']);
 
         if($status == 'active') {
             $sql = "UPDATE product SET status = 1 WHERE id = $id";
@@ -13,6 +14,7 @@
             $sql = "UPDATE product SET status = 0 WHERE id = $id";
         }elseif($status == 'delete') {
             $sql = "DELETE FROM product WHERE id = $id";
+            unlink("../media/product/".$image);
         }
 
         // sent query to database
@@ -76,7 +78,7 @@
                                                     echo "<span class= 'badge badge-pending'><a href='?status=active&id=".$row['id']."'>Deactive</a></span>&nbsp";
                                                 }
                                                 echo "<span class= 'badge badge-edit'><a href='edit_products.php?status=edit&id=".$row['id']."'>Edit</a></span>&nbsp";
-                                                echo "<span class= 'badge badge-delete'><a href='?status=delete&id=".$row['id']."'>Delete</a></span>";
+                                                echo "<span class= 'badge badge-delete'><a href='?status=delete&id=".$row['id']."&image=".$row['image']."'>Delete</a></span>";
                                             ?></td>
                                         </tr>
                                     <?php } ?>

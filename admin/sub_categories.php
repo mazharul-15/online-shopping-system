@@ -53,6 +53,15 @@
 
             // sql for categories table
             $sql = "DELETE FROM sub_categories WHERE id = $id";
+
+            // retrive image name for deleting
+            $sql_image = "SELECT product.image FROM product WHERE sub_categories_id = $id";
+            $res_image = mysqli_query($con, $sql_image);
+            while($row_image = mysqli_fetch_assoc($res_image)) {
+                $image = $row_image['image'];
+                unlink("../media/product/".$image);
+            }
+            
             // sql for product table
             $sql_product ="DELETE FROM product WHERE sub_categories_id = $id";
 

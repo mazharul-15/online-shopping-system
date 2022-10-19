@@ -3557,6 +3557,7 @@ ul.htc__instagram__posts.owl-carousel li img {
 }
 .ht__cat__thumb a img {
     width: 100%;
+    height: 180px;
 }
 .slick-initialized .slick-slide {
     outline: none;

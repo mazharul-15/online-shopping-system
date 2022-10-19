@@ -39,6 +39,10 @@
 
             // sql for categories table
             $sql = "UPDATE categories SET status = 1 WHERE id = $id";
+
+            // sql for sub categories
+            $sql_sub_category = "UPDATE sub_categories SET status = 1 WHERE categories_id = $id";
+            
             // sql for product table
             $sql_product = "UPDATE product SET status = 1 WHERE categories_id = $id";
 
@@ -46,6 +50,10 @@
 
             // sql for categories table
             $sql = "UPDATE categories SET status = 0 WHERE id = $id";
+
+            // sql for sub categories
+            $sql_sub_category = "UPDATE sub_categories SET status = 0 WHERE categories_id = $id";
+
             //sql for product table
             $sql_product = "UPDATE product SET status = 0 WHERE categories_id = $id";
 
@@ -53,6 +61,18 @@
 
             // sql for categories table
             $sql = "DELETE FROM categories WHERE id = $id";
+
+            // retrive image name for deleting
+            $sql_image = "SELECT product.image FROM product WHERE categories_id = $id";
+            $res_image = mysqli_query($con, $sql_image);
+            while($row_image = mysqli_fetch_assoc($res_image)) {
+                $image = $row_image['image'];
+                unlink("../media/product/".$image);
+            }
+
+            // sql for sub categories
+            $sql_sub_category = "DELETE FROM sub_categories WHERE categories_id = $id";
+
             // sql for product table
             $sql_product ="DELETE FROM product WHERE categories_id = $id";
 
@@ -61,6 +81,10 @@
         // sent query to database
         // DB request to categories table
         mysqli_query($con, $sql);
+
+        // DB request to sub categories table
+        mysqli_query($con, $sql_sub_category);
+
         // DB request to product table
         mysqli_query($con, $sql_product);
     }
