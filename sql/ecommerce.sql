@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 18, 2022 at 10:05 PM
+-- Generation Time: Oct 19, 2022 at 07:09 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -58,7 +58,8 @@ CREATE TABLE `categories` (
 
 INSERT INTO `categories` (`id`, `categories`, `status`) VALUES
 (15, 'Man', 1),
-(16, 'Women', 1);
+(16, 'Women', 1),
+(17, 'Car', 1);
 
 -- --------------------------------------------------------
 
@@ -112,7 +113,8 @@ INSERT INTO `orders` (`id`, `user_id`, `user_name`, `address`, `payment_type`, `
 (5, '3', 'Rafiur Rahman', 'Chirirbandar, Dinajpur.', 'Cash on delivery', 209000, 'pending', 3, '2022-10-15 06:42:40'),
 (6, '3', 'Rafiur Rahman', 'Chirirbandar, Dinajpur.', 'Cash on delivery', 15950000, 'pending', 5, '2022-10-15 08:00:01'),
 (7, '3', 'Guruji (Nirala Baba)', 'ChirirBandar, Dinajpur, Bangladesh', 'Cash on delivery', 498000, 'pending', 5, '2022-10-17 05:21:38'),
-(8, '6', 'Rezwan Rafi', 'Thripura, Mizorampur', 'Cash on delivery', 498000, 'pending', 5, '2022-10-17 06:33:37');
+(8, '6', 'Rezwan Rafi', 'Thripura, Mizorampur', 'Cash on delivery', 498000, 'pending', 5, '2022-10-17 06:33:37'),
+(9, '3', 'Rafiur Rahman', 'ChirirBandar', 'Cash on delivery', 1250000, 'pending', 1, '2022-10-19 07:02:04');
 
 -- --------------------------------------------------------
 
@@ -139,7 +141,8 @@ INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `qty`, `price`, `add
 (8, 6, 28, 1, 1450000, '2022-10-15 08:00:01'),
 (9, 6, 27, 10, 1450000, '2022-10-15 08:00:01'),
 (10, 7, 32, 1, 498000, '2022-10-17 05:21:38'),
-(11, 8, 32, 1, 498000, '2022-10-17 06:33:37');
+(11, 8, 32, 1, 498000, '2022-10-17 06:33:37'),
+(12, 9, 36, 1, 1250000, '2022-10-19 07:02:04');
 
 -- --------------------------------------------------------
 
@@ -191,7 +194,9 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `categories_id`, `sub_categories_id`, `name`, `mrp`, `price`, `qty`, `image`, `short_desc`, `description`, `meta_title`, `meta_desc`, `meta_keyword`, `status`) VALUES
-(35, 15, 6, 'Men\'s Fairness Cream-New', 85, 80, 12, 'mens-fiarness-cream.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are go', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are go', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are go', 1);
+(35, 15, 6, 'Men\'s Fairness Cream-New', 85, 80, 12, 'mens-fiarness-cream.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are go', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are go', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are go', 1),
+(36, 17, 7, 'Toyota fielder', 1300000, 1250000, 12, 'fileder-2.png', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it ', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If yo', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If yo', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If yo', 1),
+(37, 17, 7, 'Toyota fielder 2018 new', 1500000, 1450000, 4, 'fielder-1.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If yo', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If yo', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If yo', 1);
 
 -- --------------------------------------------------------
 
@@ -214,7 +219,8 @@ INSERT INTO `sub_categories` (`id`, `categories_id`, `sub_categories`, `status`)
 (3, 15, 'Fashion', 1),
 (4, 16, 'Fashion', 1),
 (5, 16, 'Beauty', 1),
-(6, 15, 'beauty', 1);
+(6, 15, 'beauty', 1),
+(7, 17, 'PrivateCar', 1);
 
 -- --------------------------------------------------------
 
@@ -313,7 +319,7 @@ ALTER TABLE `admin_users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `contact_us`
@@ -325,13 +331,13 @@ ALTER TABLE `contact_us`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `order_status`
@@ -343,13 +349,13 @@ ALTER TABLE `order_status`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `sub_categories`
 --
 ALTER TABLE `sub_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
