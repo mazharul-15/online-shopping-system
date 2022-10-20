@@ -29,12 +29,12 @@
   height: 100%;
 }
 .slider {
-  height: 100vh;
+  height: 80vh;
 }
 .slider__fixed--height {
   align-items: center;
   display: flex;
-  height: 800px;
+  height: 445px;
 }
 .slider--one .slide {
     align-items: center;

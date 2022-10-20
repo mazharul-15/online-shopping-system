@@ -27,12 +27,14 @@
             // Total price:
         $total_cart = 0;
         foreach($_SESSION['cart'] as $key => $val) {
-            $productArr = get_product($con, '', '', $key);
+            $productArr = get_product($con, '', '', $key, '');
 
             // prx($productArr);
             $price = $productArr[0]['price'];
             $qty = $val['qty'];
             $total_cart += ($price * $qty);
+
+            product_quantity_update($con, $key, $qty);
         }
 
         // prx($total_cart);

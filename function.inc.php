@@ -63,6 +63,20 @@
 
     }
 
+
+    // product quantiy update after
+    function product_quantity_update($con, $product_id, $qty) {
+        // fetching total qty
+        $sql_total_qty = "SELECT * FROM product WHERE id = $product_id";
+        $res = mysqli_fetch_assoc(mysqli_query($con, $sql_total_qty));
+        
+        $total_qty = $res['qty'];
+        $qty = $total_qty - $qty;
+
+        $sql = "UPDATE product SET qty = '$qty' WHERE id = $product_id";
+        mysqli_query($con, $sql);
+    }
+
     // sending data to contact_us table
     function send_message($con, $data) {
         $name = $data['name'];
