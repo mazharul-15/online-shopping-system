@@ -22,6 +22,7 @@
 
       $short_desc = get_safe_value($con, $_POST['short_dsc']);
       $description = get_safe_value($con, $_POST['description']);
+      $best_seller = get_safe_value($con, $_POST['best_seller']);
       $meta_title = get_safe_value($con, $_POST['meta_title']);
       $meta_desc = get_safe_value($con, $_POST['meta_desc']);
       $meta_keyword = get_safe_value($con, $_POST['meta_keyword']);
@@ -33,9 +34,9 @@
 
 
       $sql = "INSERT into product(categories_id, sub_categories_id, name, mrp, price, qty, image, short_desc, 
-      description, meta_title, meta_desc, meta_keyword, status) 
+      description, best_seller, meta_title, meta_desc, meta_keyword, status) 
       VALUES ('$categories_id', '$sub_categories_id', '$name', '$mrp', '$price', '$qty', '$image', '$short_desc',
-      '$description', '$meta_title', '$meta_desc', '$meta_keyword', '1')";
+      '$description', '$best_seller', '$meta_title', '$meta_desc', '$meta_keyword', '1')";
 
 
       // prx($_FILES['image']['type']);
@@ -148,6 +149,16 @@
                                 <div class="form-group">
                                    <label for="description" class=" form-control-label">Description</label>
                                    <textarea name="description" placeholder = "Enter description" class = "form-control py-4 mb-4 mt-2" required></textarea>
+                                </div>
+                                
+                                <!-- Best Seller -->
+                                <div class="form-group">
+                                   <label for="best_seller" class=" form-control-label">Best Seller</label>
+                                   <select name="best_seller" class = "form-control" id = "best_seller" required>
+                                       <option value="">Select</option>
+                                       <option value="1">Yes</option>
+                                       <option value="0">No</option>
+                                    </select>
                                 </div>
 
                                 <!-- Meta Title -->

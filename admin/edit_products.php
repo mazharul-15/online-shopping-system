@@ -32,6 +32,7 @@
             $image_edit = $res1['image'];
             $short_desc = $res1['short_desc'];
             $description = $res1['description'];
+            $best_seller = $res1['best_seller'];
             $meta_title = $res1['meta_title'];
             $meta_desc = $res1['meta_desc'];
             $meta_keyword = $res1['meta_keyword'];
@@ -64,25 +65,30 @@
 
         $short_desc = get_safe_value($con, $_POST['short_dsc']);
         $description = get_safe_value($con, $_POST['description']);
+        $best_seller = get_safe_value($con, $_POST['$best_seller']);
         $meta_title = get_safe_value($con, $_POST['meta_title']);
         $meta_desc = get_safe_value($con, $_POST['meta_desc']);
         $meta_keyword = get_safe_value($con, $_POST['meta_keyword']);
 
         // Checking duplicate product
-        $sql_dupli = "SELECT * FROM product WHERE categories_id = $categories_id and 
+        /*$sql_dupli = "SELECT * FROM product WHERE categories_id = $categories_id and 
         sub_categories_id = $sub_categories_id and name = '$name'";
-        $duplicate = mysqli_fetch_assoc(mysqli_query($con, $sql_dupli));
+        $duplicate = mysqli_fetch_assoc(mysqli_query($con, $sql_dupli)); */
 
         $sql = "UPDATE product SET categories_id = '$categories_id', sub_categories_id = '$sub_categories_id', 
         name = '$name', mrp = '$mrp', price = '$price', qty = '$qty', image = '$image', short_desc = '$short_desc',
-        description = '$description', meta_title = '$meta_title', meta_desc = '$meta_desc', meta_keyword = '$meta_keyword', status = '1'
+        description = '$description', best_seller = '$best_seller' ,meta_title = '$meta_title', meta_desc = '$meta_desc', meta_keyword = '$meta_keyword', status = '1'
         WHERE id = $id";
+
         // request to db
-        if($duplicate > 0) {
+        /*if($duplicate > 0) {
 
             $msg = "This product already exist!!";
 
-        }elseif(mysqli_query($con, $sql)) {
+        }else */
+
+        // send database of updating info of product
+        if(mysqli_query($con, $sql)) {
             // added image to upload folder
             move_uploaded_file($tmp_image, "../media/product/".$image);
             // unlink the previous uploaded image
@@ -172,6 +178,25 @@
                                 <div class="form-group">
                                    <label for="description" class=" form-control-label">Description</label>
                                    <textarea name="description" class = "form-control py-4 mb-4 mt-2" required ><?php echo $description;?></textarea>
+                                </div>
+
+                                <!-- Best Seller -->
+                                <div class="form-group">
+                                   <label for="best_seller" class=" form-control-label">Best Seller</label>
+                                   <select name="best_seller" class = "form-control" id = "best_seller" required>
+                                       <option value="<?php echo $best_seller; ?>">
+                                          <?php
+                                             if($best_seller == 1) {
+                                                echo "Yes";
+                                             }else {
+                                                echo "No";
+                                             }
+                                             
+                                          ?>
+                                       </option>
+                                       <option value="1">Yes</option>
+                                       <option value="0">No</option>
+                                    </select>
                                 </div>
 
                                 <!-- Meta Title -->

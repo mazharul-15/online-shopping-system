@@ -16,7 +16,7 @@
         }
     }
     // GET PRODUCT FUNCTION FOR Front-End
-    function get_product($con, $limit = '', $cat_id = '', $product_id = '') {
+    function get_product($con, $limit = '', $cat_id = '', $product_id = '', $best_seller = '') {
 
         // Query & request to DB for Product
         // Join Operation between product & categories Table
@@ -30,6 +30,11 @@
         // product id
         if($product_id != '') {
             $sql .= " and product.id = $product_id ";
+        }
+
+        //best seller
+        if($best_seller != '') {
+            $sql .= " and best_seller = $best_seller";
         }
 
         // product.categories_id == categories.id
