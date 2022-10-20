@@ -48,7 +48,7 @@
 
     // Adding Product to Database
     if(isset($_POST['edit_product'])) {
-      //prx($_POST);
+      // prx($_POST);
 
         // All values
         $id = get_safe_value($con, $_POST['id']);
@@ -65,7 +65,7 @@
 
         $short_desc = get_safe_value($con, $_POST['short_dsc']);
         $description = get_safe_value($con, $_POST['description']);
-        $best_seller = get_safe_value($con, $_POST['$best_seller']);
+        $best_seller = get_safe_value($con, $_POST['best_seller']);
         $meta_title = get_safe_value($con, $_POST['meta_title']);
         $meta_desc = get_safe_value($con, $_POST['meta_desc']);
         $meta_keyword = get_safe_value($con, $_POST['meta_keyword']);
@@ -77,7 +77,7 @@
 
         $sql = "UPDATE product SET categories_id = '$categories_id', sub_categories_id = '$sub_categories_id', 
         name = '$name', mrp = '$mrp', price = '$price', qty = '$qty', image = '$image', short_desc = '$short_desc',
-        description = '$description', best_seller = '$best_seller' ,meta_title = '$meta_title', meta_desc = '$meta_desc', meta_keyword = '$meta_keyword', status = '1'
+        description = '$description', 	best_seller = '$best_seller' ,meta_title = '$meta_title', meta_desc = '$meta_desc', meta_keyword = '$meta_keyword', status = '1'
         WHERE id = $id";
 
         // request to db
@@ -89,6 +89,7 @@
 
         // send database of updating info of product
         if(mysqli_query($con, $sql)) {
+            // prx($_POST);
             // added image to upload folder
             move_uploaded_file($tmp_image, "../media/product/".$image);
             // unlink the previous uploaded image

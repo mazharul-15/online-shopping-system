@@ -34,7 +34,7 @@
 
         //best seller
         if($best_seller != '') {
-            $sql .= " and best_seller = $best_seller";
+            $sql .= " and best_seller = $best_seller ";
         }
 
         // product.categories_id == categories.id
