@@ -93,6 +93,23 @@
         }
     }
 
+    // Seaching Product Function
+    function get_search_products($con, $search_product) {
+        $sql = "SELECT * FROM product WHERE name LIKE '%$search_product%' OR 
+        description LIKE '%$search_product%'";
+        
+        $res = mysqli_query($con, $sql);
+
+        // product array
+        $data = array();
+
+        while($row = mysqli_fetch_assoc($res)) {
+            $data[] = $row;
+        }
+
+        // returning data to search page
+        return $data;
+    }
 
     // User Register Area
     function user_register($con, $data) {

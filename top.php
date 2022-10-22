@@ -149,9 +149,9 @@
                                 <div class="header__right">
 
                                     <!-- Search Option -->
-                                    <!-- <div class="header__search search search__open">
+                                    <div class="header__search search search__open">
                                         <a href="#"><i class="icon-magnifier icons"></i></a>
-                                    </div> -->
+                                    </div>
                                     <div class="header__account" >
                                         <!-- <a href="login.php"><i class="icon-user icons"></i></a> -->
                                         <?php
@@ -190,4 +190,24 @@
             </div>
             <!-- End Mainmenu Area -->
         </header>
+
+        <!-- Start Search Popap -->
+        <div class="search__area">
+                <div class="container" >
+                    <div class="row" >
+                        <div class="col-md-12" >
+                            <div class="search__inner">
+                                <form action="search.php" method="get">
+                                    <input placeholder="Search here... " type="text" name = "search" required>
+                                    <button type="submit"></button>
+                                </form>
+                                <div class="search__close__btn">
+                                    <span class="search__close__btn_icon"><i class="zmdi zmdi-close"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Search Popap -->
         <!-- End Header Area -->

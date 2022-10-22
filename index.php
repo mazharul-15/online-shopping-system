@@ -11,7 +11,7 @@
     // prx($best_product);
 ?>
 
-        <div class="body__overlay"></div>
+    <div class="body__overlay"></div>
         <!-- Start Slider Area -->
         <div class="slider__container slider--one bg__cat--3">
             <div class="slide__container slider__activation__wrap owl-carousel">
