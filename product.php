@@ -10,7 +10,7 @@
     // Display product 
     $get_product = get_product($con, '', '', $product_id);
     // prx($get_product);
-?>
+?> 
 
         <!-- Start Bradcaump area -->
         <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/banner.jpg) no-repeat scroll center center / cover ;">

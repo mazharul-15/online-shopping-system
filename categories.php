@@ -3,14 +3,45 @@
 <?php 
     // top.php page
     include_once("top.php");
+
+    // sort
+    if(isset($_GET['sort'])) {
+
+        if($_GET['sort'] == 'default') {
+
+            $sort_by = " ORDER  BY product.id desc";
+
+        }elseif($_GET['sort'] == 'price_high') {
+
+            $sort_by = " ORDER BY product.price asc";
+
+        }elseif($_GET['sort'] == 'price_low') {
+
+            $sort_by = " ORDER BY product.price desc";
+
+        }elseif($_GET['sort'] == 'new') {
+
+            $sort_by = " ORDER BY product.id asc";
+
+        }elseif($_GET['sort'] == 'old') {
+
+            $sort_by = " ORDER BY product.id desc";
+
+        }
+    }
  
     // Category id
-    $sub_cat_id = mysqli_real_escape_string($con, $_GET['id']);
+    $cat_id = mysqli_real_escape_string($con, $_GET['id']);
 
     // Display product
-    if($sub_cat_id > 0) {
+    if($cat_id > 0) {
+        if(isset($sort_by)) {
 
-        $get_product = get_product($con, '', $sub_cat_id, '');
+            $get_product = get_product($con, '', $cat_id, '', '', $sort_by);
+
+        } else {
+            $get_product = get_product($con, '', $cat_id, '', '', '');
+        }
 
     }else {
         // header("location: index.php");
@@ -62,8 +93,9 @@
                         <div class="htc__product__rightidebar">
                             <div class="htc__grid__top">
                                 <div class="htc__select__option">
-                                    <select class="ht__select">
-                                        <option value = "">Default softing</option>
+                                    <select class="ht__select" onchange = "sort_product(<?php echo $cat_id;?>)" 
+                                    id = "sort_product">
+                                        <option value = "default">Default softing</option>
                                         <option value = "price_high">Sort by price low to high</option>
                                         <option value = "price_low">Sort by price high to low</option>
                                         <option value = "new">Sort by new first</option>
@@ -111,7 +143,7 @@
         </section>
         <!-- End Product Grid -->
         <!-- Start Banner Area -->
-        <div class="htc__banner__area">
+        <!-- <div class="htc__banner__area">
             <ul class="banner__list owl-carousel owl-theme clearfix">
                 <li><a href="product-details.html"><img src="images/banner/bn-3/1.jpg" alt="banner images"></a></li>
                 <li><a href="product-details.html"><img src="images/banner/bn-3/2.jpg" alt="banner images"></a></li>
@@ -122,11 +154,21 @@
                 <li><a href="product-details.html"><img src="images/banner/bn-3/1.jpg" alt="banner images"></a></li>
                 <li><a href="product-details.html"><img src="images/banner/bn-3/2.jpg" alt="banner images"></a></li>
             </ul>
-        </div>
+        </div> -->
         <!-- End Banner Area -->
         <!-- End Banner Area -->
 
 <!-- Including Section of Footer Page -->
+
+<script>
+    function sort_product(cat_id) {
+        var sorted_by = jQuery("#sort_product").val();
+        // console.log(cat_id, "  ", sorted_by);
+        window.location.href="categories.php?id="+cat_id+"&sort="+sorted_by;
+
+    }
+</script>
+
 <?php 
     // footer.php page
     include_once("footer.php");

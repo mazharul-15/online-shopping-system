@@ -16,7 +16,7 @@
         }
     }
     // GET PRODUCT FUNCTION FOR Front-End
-    function get_product($con, $limit = '', $cat_id = '', $product_id = '', $best_seller = '') {
+    function get_product($con, $limit = '', $cat_id = '', $product_id = '', $best_seller = '', $sort_by = '') {
 
         // Query & request to DB for Product
         // Join Operation between product & categories Table
@@ -41,13 +41,20 @@
         $sql .= " and product.categories_id = categories.id ";
 
         // order by decreasing
-        $sql.= " ORDER BY product.id desc";
+        if($sort_by != '') {
+
+            $sql .= $sort_by;
+
+        }else {
+
+            $sql.= " ORDER BY product.id desc";
+        }
 
         // limit for home page for latest product
         if($limit != '') {
              $sql.= " limit $limit";
         }
-        
+        // prx($sql);
         //getting product
         $res = mysqli_query($con, $sql); 
 
