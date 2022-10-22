@@ -63,10 +63,11 @@
                             <div class="htc__grid__top">
                                 <div class="htc__select__option">
                                     <select class="ht__select">
-                                        <option>Default softing</option>
-                                        <option>Sort by popularity</option>
-                                        <option>Sort by average rating</option>
-                                        <option>Sort by newness</option>
+                                        <option value = "">Default softing</option>
+                                        <option value = "price_high">Sort by price low to high</option>
+                                        <option value = "price_low">Sort by price high to low</option>
+                                        <option value = "new">Sort by new first</option>
+                                        <option value="old">Sort by old first</option>
                                     </select>
                                 </div>
                                 

@@ -19,6 +19,7 @@
 
         while($row = mysqli_fetch_assoc($res)) {
             $get_product[] = $row;
+            // prx($get_product[0]);
             // prx($row);
         }
 
@@ -43,15 +44,21 @@
                         <div class="col-xs-12">
                             <div class="bradcaump__inner">
                                 <nav class="bradcaump-inner">
+                                  <!-- Home -->
                                   <a class="breadcrumb-item" href="index.php">Home</a>
                                   <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
-                                  <span class="breadcrumb-item active">
-                                    <?php 
+                                  <!-- Categories -->
+                                  <a class="breadcrumb-item" href="categories.php?id=<?php echo $get_product[0]['categories_id'];?>"><?php echo $get_product[0]['categories']; ?></a>
+                                  <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
+                                  <!-- Sub Categories -->
+                                  <span class="breadcrumb-item active"> 
+                                    <?php /*
                                         if(count($get_product) >0 ) {
                                             echo $get_product[0]['categories'];
                                         }else {
                                             echo "Products";
-                                        } 
+                                        } */
+                                        echo $get_product[0]['sub_categories'];
                                     ?>
                                 </span>
                                 </nav>
@@ -72,10 +79,11 @@
                             <div class="htc__grid__top">
                                 <div class="htc__select__option">
                                     <select class="ht__select">
-                                        <option>Default softing</option>
-                                        <option>Sort by popularity</option>
-                                        <option>Sort by average rating</option>
-                                        <option>Sort by newness</option>
+                                        <option value = "">Default softing</option>
+                                        <option value = "price_high">Sort by price low to high</option>
+                                        <option value = "price_low">Sort by price high to low</option>
+                                        <option value = "new">Sort by new first</option>
+                                        <option value="old">Sort by old first</option>
                                     </select>
                                 </div>
                                 
