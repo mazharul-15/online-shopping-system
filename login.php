@@ -61,6 +61,8 @@
 									
 									<div class="contact-btn">
 										<button type= "button" name = "login-btn" class="fv-btn" onclick = "user_login()">Login</button>
+										<!-- Forgot Password Link -->
+										<a href="forgot_password.php" class = "forgot-password">Forgot Password?</a>
 									</div>
 								</form>
 								<div class="form-output">
