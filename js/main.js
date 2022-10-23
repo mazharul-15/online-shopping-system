@@ -552,6 +552,7 @@ function user_login() {
     Cart Area 
 -----------------------------------------------*/
 function manage_cart(pid, type) {
+    // console.log(pid, type);
     if(type == 'update' || type == 'remove') {
         
         var qty = jQuery("#"+pid+"qty").val();
@@ -585,4 +586,26 @@ function manage_cart(pid, type) {
     }else {
         jQuery('.zero_qty_message').html("Please product quantity");
     }
-}   
+}
+
+
+/*------------------------------------------------------------
+    Wishlist Manage
+-------------------------------------------------------------*/
+function wishlist_manage(pid, type) {
+    // console.log(pid, type);
+    jQuery.ajax({
+        url: 'manage_wishlist.php',
+        type: 'post',
+        data: 'pid='+pid+'&type='+type,
+        success: function(result) {
+            if(result.length == 12) {
+                window.location.href = 'login.php';
+
+            }else {
+
+
+            }
+        }
+    });
+}

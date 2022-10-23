@@ -85,11 +85,32 @@
                             <?php foreach($get_product as $list) { ?>
                             <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
                                 <div class="category">
+                                    <!-- Product Image -->
                                     <div class="ht__cat__thumb">
-                                        <a href="product.php?id=<?php echo $list['id'] ?>">
+                                        <a href="product.php?id=<?php echo $list['id']; ?>">
                                             <img src="media/product/<?php echo $list['image']; ?>" alt="product images">
                                         </a>
                                     </div>
+
+                                    <!-- Wish List, Cart -->
+                                    <div class="fr__hover__info">
+                                        <ul class="product__action">
+                                            <li>
+                                                <a href="javascript:void(0)" onclick="wishlist_manage(<?php echo $list['id'];?>,'add')">
+                                                    <i class="icon-heart icons"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0)" onclick="manage_cart(<?php echo $list['id'];?>,'add')">
+                                                    <i class="icon-handbag icons"></i>
+                                                    <!-- for quantity -->
+                                                    <input type="hidden" id = "qty" value = "1">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- product price -->
                                     <div class="fr__product__inner">
                                         <h4><a href="product.php?id=<?php echo $list['id'] ?>"><?php echo $list['name'] ?></a></h4>
                                         <ul class="fr__pro__prize">
@@ -126,11 +147,32 @@
                             <?php foreach($best_product as $list) { ?>
                             <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
                                 <div class="category">
+                                    <!-- Product Image -->
                                     <div class="ht__cat__thumb">
                                         <a href="product.php?id=<?php echo $list['id'] ?>">
                                             <img src="media/product/<?php echo $list['image']; ?>" alt="product images">
                                         </a>
                                     </div>
+
+                                    <!-- Wish List, Cart -->
+                                    <div class="fr__hover__info">
+                                        <ul class="product__action">
+                                            <li>
+                                                <a href="javascript:void(0)" onclick="wishlist_manage(<?php echo $list['id'];?>,'add')">
+                                                    <i class="icon-heart icons"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0)" onclick="manage_cart(<?php echo $list['id'];?>,'add')">
+                                                    <i class="icon-handbag icons"></i>
+                                                    <!-- for quantity -->
+                                                    <input type="hidden" id = "qty" value = "1">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- product price -->
                                     <div class="fr__product__inner">
                                         <h4><a href="product.php?id=<?php echo $list['id'] ?>"><?php echo $list['name'] ?></a></h4>
                                         <ul class="fr__pro__prize">

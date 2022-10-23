@@ -118,6 +118,25 @@
                                                         <img src="media/product/<?php echo $list['image']; ?>" alt="product images">
                                                     </a>
                                                 </div>
+
+                                            <!-- Wish List, Cart -->
+                                            <div class="fr__hover__info">
+                                                <ul class="product__action">
+                                                    <li>
+                                                        <a href="javascript:void(0)" onclick="wishlist_manage(<?php echo $list['id'];?>,'add')">
+                                                            <i class="icon-heart icons"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)" onclick="manage_cart(<?php echo $list['id'];?>,'add')">
+                                                            <i class="icon-handbag icons"></i>
+                                                            <!-- for quantity -->
+                                                            <input type="hidden" id = "qty" value = "1">
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
                                                 <div class="fr__product__inner">
                                                     <h4><a href="product.php?id=<?php echo $list['id'] ?>"><?php echo $list['name'] ?></a></h4>
                                                     <ul class="fr__pro__prize">
@@ -141,24 +160,7 @@
                 </div>
             </div>
         </section>
-        <!-- End Product Grid -->
-        <!-- Start Banner Area -->
-        <!-- <div class="htc__banner__area">
-            <ul class="banner__list owl-carousel owl-theme clearfix">
-                <li><a href="product-details.html"><img src="images/banner/bn-3/1.jpg" alt="banner images"></a></li>
-                <li><a href="product-details.html"><img src="images/banner/bn-3/2.jpg" alt="banner images"></a></li>
-                <li><a href="product-details.html"><img src="images/banner/bn-3/3.jpg" alt="banner images"></a></li>
-                <li><a href="product-details.html"><img src="images/banner/bn-3/4.jpg" alt="banner images"></a></li>
-                <li><a href="product-details.html"><img src="images/banner/bn-3/5.jpg" alt="banner images"></a></li>
-                <li><a href="product-details.html"><img src="images/banner/bn-3/6.jpg" alt="banner images"></a></li>
-                <li><a href="product-details.html"><img src="images/banner/bn-3/1.jpg" alt="banner images"></a></li>
-                <li><a href="product-details.html"><img src="images/banner/bn-3/2.jpg" alt="banner images"></a></li>
-            </ul>
-        </div> -->
-        <!-- End Banner Area -->
-        <!-- End Banner Area -->
 
-<!-- Including Section of Footer Page -->
 
 <script>
     function sort_product(cat_id) {
