@@ -5,6 +5,32 @@
     // Category id
     $sub_cat_id = mysqli_real_escape_string($con, $_GET['id']);
 
+    // sort
+    if(isset($_GET['sort'])) {
+
+        if($_GET['sort'] == 'default') {
+
+            $sort_by = " ORDER  BY product.id desc";
+
+        }elseif($_GET['sort'] == 'price_high') {
+
+            $sort_by = " ORDER BY product.price asc";
+
+        }elseif($_GET['sort'] == 'price_low') {
+
+            $sort_by = " ORDER BY product.price desc";
+
+        }elseif($_GET['sort'] == 'new') {
+
+            $sort_by = " ORDER BY product.id asc";
+
+        }elseif($_GET['sort'] == 'old') {
+
+            $sort_by = " ORDER BY product.id desc";
+
+        }
+    }
+
     // Display product
     if($sub_cat_id > 0) {
 
@@ -12,6 +38,12 @@
         $sql = "SELECT product.*, categories.categories, sub_categories.sub_categories 
         FROM product, categories, sub_categories WHERE product.sub_categories_id = $sub_cat_id and 
         product.categories_id = categories.id and product.sub_categories_id = sub_categories.id";
+
+        //sorting chekcing
+        if(isset($sort_by)) {
+            $sql .= $sort_by;
+        }
+        echo $sql;
         $res = mysqli_query($con, $sql);
         // prx($res);
 
@@ -78,8 +110,9 @@
                         <div class="htc__product__rightidebar">
                             <div class="htc__grid__top">
                                 <div class="htc__select__option">
-                                    <select class="ht__select">
-                                        <option value = "">Default softing</option>
+                                    <select class="ht__select" onchange = "sort_product(<?php echo $sub_cat_id;?>)"
+                                    id = "sort_product">
+                                        <option value = "default">Default softing</option>
                                         <option value = "price_high">Sort by price low to high</option>
                                         <option value = "price_low">Sort by price high to low</option>
                                         <option value = "new">Sort by new first</option>
@@ -127,7 +160,7 @@
         </section>
         <!-- End Product Grid -->
         <!-- Start Banner Area -->
-        <div class="htc__banner__area">
+        <!-- <div class="htc__banner__area">
             <ul class="banner__list owl-carousel owl-theme clearfix">
                 <li><a href="product-details.html"><img src="images/banner/bn-3/1.jpg" alt="banner images"></a></li>
                 <li><a href="product-details.html"><img src="images/banner/bn-3/2.jpg" alt="banner images"></a></li>
@@ -138,9 +171,18 @@
                 <li><a href="product-details.html"><img src="images/banner/bn-3/1.jpg" alt="banner images"></a></li>
                 <li><a href="product-details.html"><img src="images/banner/bn-3/2.jpg" alt="banner images"></a></li>
             </ul>
-        </div>
+        </div> -->
         <!-- End Banner Area -->
         <!-- End Banner Area -->
+
+<script>
+    function sort_product(sub_cat_id) {
+        var sorted_by = jQuery("#sort_product").val();
+        // console.log(sub_cat_id, "  ", sorted_by);
+        window.location.href="sub_categories.php?id="+sub_cat_id+"&sort="+sorted_by;
+
+    }
+</script>
 
 <?php 
     // including footer.php
