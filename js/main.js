@@ -603,8 +603,8 @@ function wishlist_manage(pid, type) {
                 window.location.href = 'login.php';
 
             }else {
-
-
+                console.log(result);
+                jQuery(".htc__wishlist").html(result);
             }
         }
     });

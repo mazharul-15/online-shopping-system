@@ -31,6 +31,14 @@
     $obj = new add_to_cart();
     $total_product = $obj->totalProduct();
 
+    //wishlist total product
+    if(isset($_SESSION['user_id'])) {
+        $user_id = $_SESSION['user_id'];
+        $sql = "SELECT * FROM wishlist WHERE user_id = $user_id";
+        $total_wish_product = mysqli_num_rows(mysqli_query($con, $sql));
+        // prx($total_wish_product);
+    }
+
 ?>
 
 <!-- Header page  -->
@@ -69,6 +77,23 @@
 
     <!-- Modernizr JS -->
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+
+    <style>
+        
+        .htc__shopping__cart a span.htc__wishlist {
+            background: #c43b68;
+            border-radius: 100%;
+            color: #fff;
+            font-size: 9px;
+            height: 17px;
+            line-height: 19px;
+            position: absolute;
+            right: 19px;
+            text-align: center;
+            top: -4px;
+            width: 17px;
+        }
+    </style>
 </head>
 
 <body>
@@ -172,7 +197,20 @@
 
                                     <!-- Shopping Cart -->
                                     <div class="htc__shopping__cart">
-                                        <a href="wishlist.php"><i class="icon-heart icons"></i></a>
+                                        <?php 
+                                        if(isset($_SESSION['user_id'])) {
+                                        ?>
+                                            <a href="wishlist.php"><i class="icon-heart icons"></i></a>
+                                            <a href="wishlist.php">
+                                                <span class="htc__wishlist">
+                                                    <?php
+                                                    echo $total_wish_product;
+                                                    ?>
+                                                </span>
+                                            </a>
+                                        <?php
+                                        }
+                                        ?>
                                         <a class="cart__menu" href="#"><i class="icon-handbag icons"></i></a>
                                         <a href="cart.php"><span class="htc__qua">
                                             <?php

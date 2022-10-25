@@ -3,7 +3,16 @@
     include_once("top.php");
     
     // user_id form $_SESSION['user_id']
-    $user_id = get_safe_value($con, $_SESSION['user_id']);
+    if(isset($_SESSION['user_id'])) {
+
+        $user_id = get_safe_value($con, $_SESSION['user_id']);
+    }else {
+        ?>
+        <script>
+            window.location.href = "login.php";
+        </script>
+        <?php
+    }
 
     //Removing item form wishlist
     if(isset($_GET['action'])) {
@@ -94,6 +103,10 @@
                                                 <td class="product-price"><span class="amount">Tk. <?php echo $product_price; ?></span></td>
                                                 <td class="product-remove"><a href="javascript:void(0)"
                                                 onclick = "remove_item('<?php echo $list['product_id']; ?>','remove')"><i class="icon-trash icons"></i></a></td>
+                                                <!-- another method for performing on page action -->
+                                                <!-- <td class = "Product-remove">
+                                                    <a href="?action=remove&product_id=<?php //echo $list['product_id']?>"><i class="icon-trash icons"></i></a>
+                                                </td> -->
                                             </tr>
 
                                             <?php } 
@@ -106,10 +119,6 @@
                                     <div class="buttons-cart--inner">
                                         <div class="buttons-cart">
                                             <a href="index.php">Continue Shopping</a>
-                                        </div>
-                                        <div class="buttons-cart checkout--btn">
-                                            <!-- <a href="#">update</a> -->
-                                            <a href="checkout.php">checkout</a>
                                         </div>
                                     </div>
                                 </div>
