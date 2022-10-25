@@ -172,6 +172,7 @@
 
                                     <!-- Shopping Cart -->
                                     <div class="htc__shopping__cart">
+                                        <a href="wishlist.php"><i class="icon-heart icons"></i></a>
                                         <a class="cart__menu" href="#"><i class="icon-handbag icons"></i></a>
                                         <a href="cart.php"><span class="htc__qua">
                                             <?php

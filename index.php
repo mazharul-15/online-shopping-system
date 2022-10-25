@@ -90,7 +90,7 @@
                                         <a href="product.php?id=<?php echo $list['id']; ?>">
                                             <img src="media/product/<?php echo $list['image']; ?>" alt="product images">
                                         </a>
-                                    </div>
+                                  </div>
 
                                     <!-- Wish List, Cart -->
                                     <div class="fr__hover__info">
