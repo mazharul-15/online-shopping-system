@@ -6,7 +6,7 @@
     $user_id = get_safe_value($con, $_SESSION['user_id']);
 
     //Removing item form wishlist
-    if(isset($_GET['remove'])) {
+    if(isset($_GET['action'])) {
 
         // $user_id = get_safe_value($con, $_SESSION['user_id']);
         $product_id = get_safe_value($con, $_GET['product_id']);
@@ -93,7 +93,7 @@
                                                 </td>
                                                 <td class="product-price"><span class="amount">Tk. <?php echo $product_price; ?></span></td>
                                                 <td class="product-remove"><a href="javascript:void(0)"
-                                                onclick = "manage_cart('<?php echo $key; ?>','remove')"><i class="icon-trash icons"></i></a></td>
+                                                onclick = "remove_item('<?php echo $list['product_id']; ?>','remove')"><i class="icon-trash icons"></i></a></td>
                                             </tr>
 
                                             <?php } 
@@ -121,6 +121,20 @@
         </div>
         <!-- cart-main-area end -->
 
+        <!-- Javascript for removing item -->
+        <script>
+            function remove_item(pid, action) {
+                console.log(pid, action);
+                jQuery.ajax({
+                    url: 'wishlist.php',
+                    type: 'GET',
+                    data: 'product_id='+pid+'&action='+action,
+                    success: function() {
+                        window.location.href = window.location.href;
+                    }
+                });
+            }
+        </script>
 
 <?php 
     // footer.php page
