@@ -77,23 +77,6 @@
 
     <!-- Modernizr JS -->
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
-
-    <style>
-        
-        .htc__shopping__cart a span.htc__wishlist {
-            background: #c43b68;
-            border-radius: 100%;
-            color: #fff;
-            font-size: 9px;
-            height: 17px;
-            line-height: 19px;
-            position: absolute;
-            right: 19px;
-            text-align: center;
-            top: -4px;
-            width: 17px;
-        }
-    </style>
 </head>
 
 <body>

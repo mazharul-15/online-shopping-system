@@ -2,32 +2,7 @@
     // including header file
     include_once("top.inc.php");
 
-
-    // $sql = "SELECT * FROM categories ORDER BY categories desc";
-    // $res = mysqli_query($con, $sql);
-
-    // Categories Active/Deactive/Delete/Edit
-    /*if(isset($_GET['type']) && $_GET['type'] != ''){
-
-        $type = get_safe_value($con, $_GET['type']);
-
-        if($type == 'status') {
-
-            $operation = get_safe_value($con, $_GET['operation']);
-            $id = get_safe_value($con, $_GET['id']);
-
-            if($operation == "active") {
-                $status = 1;
-            } else {
-                $status = 0;
-            }
-
-            $sql = "UPDATE categories set status = $status WHERE id = $id";
-            mysqli_query($con, $sql);
-        }
-    } */
-
-    // category: Active / Deactive/ Edit / Delete
+    // users delete
     if(isset($_GET['status'])) {
         $status = get_safe_value($con, $_GET['status']);
         $id = get_safe_value($con, $_GET['id']);
@@ -62,6 +37,7 @@
                                        <th>ID</th>
                                        <th>Name</th>
                                        <th>Email</th>
+                                       <th>Mobile</th>
                                        <th>Date</th>
                                        <th>Action</th>
                                     </tr>

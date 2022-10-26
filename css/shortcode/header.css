@@ -987,3 +987,18 @@ h4.offset__title {
 .shp__cart__wrap .shp__single__product + .shp__single__product {
   border-top: 1px solid #ddd;
 }
+
+/* CSS for wish list */
+.htc__shopping__cart a span.htc__wishlist {
+  background: #c43b68;
+  border-radius: 100%;
+  color: #fff;
+  font-size: 9px;
+  height: 17px;
+  line-height: 19px;
+  position: absolute;
+  right: 19px;
+  text-align: center;
+  top: -4px;
+  width: 17px;
+}

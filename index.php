@@ -7,7 +7,8 @@
     //Get Latest Products From DB usnig product Table
     $get_product = get_product($con, 12, '', '', '', '');
     // prx($get_product);
-    $best_product = get_product($con, 4, '', '', 1, '');
+
+    $best_product = get_product($con, 10, '', '', 1, '');
     // prx($best_product);
 ?>
 
