@@ -56,6 +56,10 @@
 /*---------------------------------------------------------------------------------------
                 Meta Tag
 ---------------------------------------------------------------------------------------*/
+    $meta_title = "jammer's eShop";
+    $meta_desc = "ecommerce website";
+    $meta_keyword = "ecommerce website";
+
     if($script_name == 'product.php' && isset($_GET['id'])) {
         $product_id = get_safe_value($con, $_GET['id']);
         $sql = "SELECT * FROM product WHERE id = $product_id";
@@ -75,17 +79,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>
-        <?php
-        if(isset($meta_title)) {
-            echo $meta_title;
-        }else {
-            echo "jammer's eShop";
-        }
-        ?>
-    </title>
-    <meta name="description" content="<?php if(isset($meta_desc)) {echo $meta_desc;} ?>">
-    <meta name = "keywords" content ="<?php if(isset($meta_keyword)) {echo $meta_keyword;} ?>">
+    <title><?php echo $meta_title;?></title>
+    <meta name="description" content="<?php echo $meta_desc; ?>">
+    <meta name = "keywords" content ="<?php echo $meta_keyword;?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Place favicon.ico in the root directory -->
