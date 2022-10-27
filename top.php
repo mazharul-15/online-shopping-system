@@ -6,7 +6,18 @@
     //including add_to_cart.inc.php
     include_once("add_to_cart.inc.php");
 
-    // dispaly category name form database start
+/*---------------------------------------------------------------------------------------
+                Page Name
+---------------------------------------------------------------------------------------*/
+    // prx($_SERVER);
+    $script_name_arr = explode('/', $_SERVER['SCRIPT_NAME']);
+    // prx($script_name_arr);
+    $script_name = $script_name_arr[count($script_name_arr)-1];
+    // prx($script_name);
+
+/*---------------------------------------------------------------------------------------
+                Fetching Categories
+---------------------------------------------------------------------------------------*/
     $sql = "SELECT * FROM categories WHERE status = 1 ORDER BY categories asc";
     $cat_res = mysqli_query($con, $sql);
 
@@ -15,9 +26,10 @@
     while($row = mysqli_fetch_assoc($cat_res)) {
         $cat_arr[] = $row;
     }
-    // dispaly category name form database end
 
-    // fetching sub_categories name form sub_categories table
+/*---------------------------------------------------------------------------------------
+                Fetching Sub Categories
+---------------------------------------------------------------------------------------*/
     $sql_sub = "SELECT * FROM sub_categories WHERE status = 1"; //ORDER BY sub_categories asc";
     $sub_cat = mysqli_query($con, $sql_sub);
 
@@ -44,6 +56,16 @@
 /*---------------------------------------------------------------------------------------
                 Meta Tag
 ---------------------------------------------------------------------------------------*/
+    if($script_name == 'product.php' && isset($_GET['id'])) {
+        $product_id = get_safe_value($con, $_GET['id']);
+        $sql = "SELECT * FROM product WHERE id = $product_id";
+        $res = mysqli_fetch_assoc(mysqli_query($con, $sql));
+        $meta_title = $res['meta_title'];
+        $meta_desc = $res['meta_desc'];
+        $meta_keyword = $res['meta_keyword'];
+        // prx($res);
+    }
+
 ?>
 
 <!-- Header page  -->
@@ -53,8 +75,17 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>jammer's eShop</title>
-    <meta name="description" content="">
+    <title>
+        <?php
+        if(isset($meta_title)) {
+            echo $meta_title;
+        }else {
+            echo "jammer's eShop";
+        }
+        ?>
+    </title>
+    <meta name="description" content="<?php if(isset($meta_desc)) {echo $meta_desc;} ?>">
+    <meta name = "keywords" content ="<?php if(isset($meta_keyword)) {echo $meta_keyword;} ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Place favicon.ico in the root directory -->
