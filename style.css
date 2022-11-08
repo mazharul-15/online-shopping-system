@@ -3568,5 +3568,21 @@ ul.htc__instagram__posts.owl-carousel li img {
     font-size: 16px;
 }
 
+/* OTP Section */
+.verify-otp {
+    display: none;
+}
+
+.btn-style {
+    height: 62px;
+    width: 69px;
+    font-size: 12px;
+    padding: 0px 10px;
+}
+
+#send-otp {
+    padding: 5px 5px;
+}
+
 
 

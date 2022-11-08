@@ -92,6 +92,14 @@
 									<div class="single-contact-form">
 										<div class="contact-box name">
 											<input type="text" id = "email" name="email" placeholder="Your Email*" style="width:100%" >
+											
+											<!-- Send OTP -->
+											<button type = "button" id = "send-otp-btn" onclick = "send_otp()" class="fv-btn btn-style">Send OTP</button>
+											<input type="text" class = "verify-email" id="send-otp" placeholder = "verify email">
+											<!-- Verify OTP -->
+											<button type = "button" id = "verify-otp-btn" onclick = "verify_otp()" class="fv-btn verify-otp btn-style">Verify OTP</button>
+											<input type="text" class = "verify-otp" id="verify-otp" placeholder = "verify OTP">
+										
 										</div>
 										<span class="field_error" id="email_error"></span>
 									</div>
