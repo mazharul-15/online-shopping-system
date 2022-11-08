@@ -91,15 +91,17 @@
 									</div>
 									<div class="single-contact-form">
 										<div class="contact-box name">
-											<input type="text" id = "email" name="email" placeholder="Your Email*" style="width:100%" >
+											<input type="text" id = "email" name="email" placeholder="Your Email*" style="width: 60%;" >
 											
 											<!-- Send OTP -->
-											<button type = "button" id = "send-otp-btn" onclick = "send_otp()" class="fv-btn btn-style">Send OTP</button>
-											<input type="text" class = "verify-email" id="send-otp" placeholder = "verify email">
+											<button type = "button" id = "send-otp-btn" onclick = "send_otp()" class="btn-style">Send OTP</button>
+											<!-- <input type="text" class = "verify-email" id="send-otp" placeholder = "verify email"> -->
 											<!-- Verify OTP -->
 											<button type = "button" id = "verify-otp-btn" onclick = "verify_otp()" class="fv-btn verify-otp btn-style">Verify OTP</button>
 											<input type="text" class = "verify-otp" id="verify-otp" placeholder = "verify OTP">
 										
+											<!-- verified message -->
+											<span id = "otp-result"></span>
 										</div>
 										<span class="field_error" id="email_error"></span>
 									</div>
@@ -132,6 +134,64 @@
             </div>
         </section>
         <!-- End Contact Area -->
+
+		<!-- Javascript Section -->
+		<script>
+			function send_otp() {
+				var email = jQuery("#email").val();
+				if(email == '') {
+					jQuery("#email_error").html("Please enter email!");
+				}else {
+					jQuery.ajax({
+						url: 'send_otp.php',
+						type: 'post',
+						data: 'email='+email,
+						success: function(result) {
+							if(result == 'done') {
+
+								jQuery("#email").attr("disabled", true);
+								jQuery("#send-otp-btn").hide();
+								jQuery("#email_error").hide();
+								jQuery(".verify-otp").show();
+								
+							}else {
+								jQuery("#email_error").show();
+								jQuery("#email_error").html("Please enter valid email!!");
+							}
+							
+						}
+					});
+					
+				}
+			}
+
+			function verify_otp() {
+				var otp = jQuery("#verify-otp").val();
+				if(otp == '') {
+					jQuery("#email_error").show();
+					jQuery("#email_error").html("Please enter otp");
+				}else {
+
+					jQuery.ajax({
+						url: 'verify_otp.php',
+						type: 'post',
+						data: 'otp='+otp,
+						success: function(result) {
+							if(result == 'done') {
+
+								jQuery(".verify-otp").hide();
+								jQuery("#email_error").hide();
+								jQuery("#otp-result").css("display", "block");
+								jQuery("#otp-result").html("Email is Varified");
+							}else {
+								jQuery("#email_error").show();
+								jQuery("#email_error").html("Please enter right otp");
+							}
+						}
+					});
+				}
+			}
+		</script>
 
 <?php
     // including footer.php

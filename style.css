@@ -3584,5 +3584,24 @@ ul.htc__instagram__posts.owl-carousel li img {
     padding: 5px 5px;
 }
 
+#otp-result, #send-otp-btn {
+    display: none;
+    background: #c43b68;
+    border: 1px solid #c43b68;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    height: 62px;
+    width: 162px;
+    padding: 19px 19px;
+    text-transform: uppercase;
+    /* transition: all 0.4s ease 0s; */
+}
+
+#send-otp-btn {
+    display: block;
+}
+
 
 
