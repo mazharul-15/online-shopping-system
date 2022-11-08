@@ -105,6 +105,12 @@
 										</div>
 										<span class="field_error" id="email_error"></span>
 									</div>
+
+									<!-- OTP Verification Testing for submit button -->
+									<div class="single-contact-form">
+										<input type="hidden" id = "otp-submit" value = "NO">
+									</div>
+
 									<div class="single-contact-form">
 										<div class="contact-box name">
 											<input type="text" id = "mobile" name="mobile" placeholder="Your Mobile*" style="width:100%" >
@@ -142,6 +148,8 @@
 				if(email == '') {
 					jQuery("#email_error").html("Please enter email!");
 				}else {
+					jQuery("#send-otp-btn").html("Please Wait..");
+					jQuery("#send-otp-btn").attr("disabled", true);
 					jQuery.ajax({
 						url: 'send_otp.php',
 						type: 'post',
@@ -183,6 +191,7 @@
 								jQuery("#email_error").hide();
 								jQuery("#otp-result").css("display", "block");
 								jQuery("#otp-result").html("Email is Varified");
+								jQuery("#otp-submit").val("YES");
 							}else {
 								jQuery("#email_error").show();
 								jQuery("#email_error").html("Please enter right otp");

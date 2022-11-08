@@ -474,6 +474,7 @@ function user_register() {
     var email = jQuery("#email").val();
     var mobile = jQuery("#mobile").val();
     var password = jQuery("#password").val();
+    var otpCheck = jQuery("#otp-submit").val();
     var is_error = '';
 
     // jQuery(".field_error").css("color","red");
@@ -497,6 +498,10 @@ function user_register() {
        jQuery("#password_error").html("Plese Enter password");
        var is_error = 'yes';
     
+    }else if(otpCheck == "NO") {
+        console.log(otpCheck);
+        jQuery(".register-messege").html("Varify the email!!");
+        var is_error = 'yes';
     }else if(is_error == ''){
 
         jQuery.ajax({
