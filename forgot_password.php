@@ -38,14 +38,14 @@
 							<form method="post">
 							    <div class="single-contact-form">
 									<div class="contact-box name">
-										<input type="email" id = "email" name="email" placeholder="Your Email*" style="width:100%">
+										<input type="email" id = "email" name="email" placeholder="Your Email*" style="width:100%" required>
 									</div>
 									<span class="field_error" id="email_error"></span>
 								</div>
 
                                 <!-- Submit Button -->
 								<div class="contact-btn">
-									<button type= "button" name = "login-btn" class="fv-btn" onclick = "forgot_password()">Submit</button>
+									<button type= "button" name = "login-btn" class="fv-btn" id = "submit-btn" onclick = "forgot_password()">Submit</button>
 								</div>
 							</form>
 							<div class="form-output">
@@ -62,14 +62,21 @@
     <script>
         function forgot_password() {
             var email = jQuery("#email").val();
-            jQuery.ajax({
-                url: 'forgot_password_submit.php',
-                type: 'post',
-                data: 'email='+email,
-                success: function(result) {
-                    jQuery(".forgot_password_message").html(result);
-                }
-            });
+            if(email == '') {
+                jQuery("#email_error").html("Please enter an email");
+            }else {
+                jQuery("#submit-btn").attr("disabled", true);
+                jQuery("#submit-btn").html("Please wait....");
+                jQuery.ajax({
+                    url: 'forgot_password_submit.php',
+                    type: 'post',
+                    data: 'email='+email,
+                    success: function(result) {
+                        jQuery("#submit-btn").hide();
+                        jQuery(".forgot_password_message").html(result);
+                    }
+                });
+            }
         }
     </script>
 
