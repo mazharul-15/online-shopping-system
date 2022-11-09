@@ -277,6 +277,36 @@ nav.off__canvars--menu ul li ul li a:hover {
     width: 2px; */
 }
 
+.header_user .user .user-details {
+  position: relative;
+  cursor: pointer;
+}
+
+.header_user .sub-menu {
+  display: none;
+  position: absolute;
+  background: #ada9a9;
+  border: 1px solid #ada9a9;
+  border-radius: 6px;
+  width: 150px;
+  top: 100%;
+  left: 0%;
+  margin: 0;
+  padding: 0;
+  z-index: 100;
+}
+
+.header_user .sub-menu li {
+  /* padding: 5px; */
+  margin: 5px;
+}
+
+.header_user .user-details:hover .sub-menu {
+  display: block;
+}
+
+
+
 
 
 /*-----------------------------------------

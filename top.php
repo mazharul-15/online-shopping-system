@@ -192,15 +192,27 @@
                                     <div class="header__search search search__open">
                                         <a href="#"><i class="icon-magnifier icons"></i></a>
                                     </div>
-                                    <div class="header__account" >
+                                    <div class="header_user" >
                                         <!-- <a href="login.php"><i class="icon-user icons"></i></a> -->
                                         <?php
                                             
                                             if(isset($_SESSION['user_login'])) {
-
-                                                echo '<a href = "logout.php" style = "font-size: 10px;">'.$_SESSION['user_name'].'</a>';
+                                                ?>
+                                                <ul class = "user">
+                                                    <li class = "user-details">
+                                                        <?php echo $_SESSION['user_name'];?>
+                                                        <ul class = "sub-menu">
+                                                            <li><a href="logout.php">Log out</a></li>
+                                                            <li><a href="my_order.php">My Order</a></li>
+                                                            <li><a href="account_setting">Setting</a></li>
+                                                            
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                                <?php
+                                                // echo '<a href = "logout.php" style = "font-size: 10px;">'.$_SESSION['user_name'].'</a>';
                                                 //echo '<a href ="logout.php" style ="font-size: 12px">log out</a>';
-                                                echo '<a href ="my_order.php" style ="font-size: 12px">My Order</a>';
+                                                // echo '<a href ="my_order.php" style ="font-size: 12px">My Order</a>';
 
                                             }else {
 
