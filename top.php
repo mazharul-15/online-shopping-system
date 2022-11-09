@@ -204,7 +204,7 @@
                                                         <ul class = "sub-menu">
                                                             <li><a href="logout.php">Log out</a></li>
                                                             <li><a href="my_order.php">My Order</a></li>
-                                                            <li><a href="account_setting">Setting</a></li>
+                                                            <li><a href="account_setting.php">Profile</a></li>
                                                             
                                                         </ul>
                                                     </li>
