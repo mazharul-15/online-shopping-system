@@ -1,0 +1,38 @@
+table {
+    width: 80%;
+    margin: auto;
+    padding: 10px;
+}
+
+table tr {
+    border: 1px solid #000000;
+}
+
+table th, td{
+    text-align: left;
+    padding-top: 10px;
+    /* background: #e4d9d9; */
+    /* border: 1px solid #000000; */
+}
+
+table .name {
+    width: 20%;
+}
+
+table .thumbnail {
+    width: 30%;
+}
+
+table .qty, table .price,
+table .total-price {
+    width: 12%;
+}
+
+#price {
+    background: #e4d9d9;
+}
+
+img {
+    width: 250px;
+    height: 200px;
+}

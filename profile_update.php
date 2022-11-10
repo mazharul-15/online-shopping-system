@@ -12,7 +12,8 @@
     $sql = "UPDATE users SET name = '$name', password = '$password', email = '$email', mobile = '$mobile' 
     WHERE id = $id";
 
-    mysqli_query($con, $sql);
-    echo "done";
-
+    if(mysqli_query($con, $sql)) {
+        $_SESSION['user_name'] = $name;
+        echo "done";
+    }
 ?>
