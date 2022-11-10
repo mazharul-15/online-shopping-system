@@ -64,7 +64,9 @@
                                             }
                                         ?>
                                         <tr>
-                                            <td colspan = "3"></td>
+                                            <td colspan = "3" style = "">
+                                                <a href = "../invoice_pdf.php?id=<?php echo $order_id; ?>"><b>Download PDF</b></a>
+                                            </td>
                                             <td class = "product-name">Total Price</td>
                                             <td class = "product-name"><?php echo $final_price;?></td>
                                         </tr>

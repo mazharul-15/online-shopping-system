@@ -75,7 +75,11 @@
                                                 }
                                             ?>
                                             <tr>
-                                                <td colspan = "3"></td>
+                                                <td colspan = "3" style = "background: #ba9999;">
+                                                <?php if($final_price > 0) {?>
+                                                    <a href = "invoice_pdf.php?id=<?php echo $order_id; ?>"><b>Download PDF</b></a>
+                                                <?php } ?>
+                                                </td>
                                                 <td class = "product-name">Total Price</td>
                                                 <td class = "product-name"><?php echo $final_price;?></td>
                                             </tr>

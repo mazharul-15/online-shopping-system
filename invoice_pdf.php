@@ -7,11 +7,21 @@
     include_once("connection.inc.php");
     include_once("function.inc.php");
 
+    // checking user log in or not
+    if(!isset($_SESSION['user_id']) || !isset($_SESSION['ADMIN_LOGIN'])) {
+        die();
+    }
+
     $order_id = get_safe_value($con, $_GET['id']);
     $sql = "SELECT order_detail.*, product.name, product.image FROM order_detail, product
     WHERE order_detail.order_id = $order_id and order_detail.product_id = product.id";
 
     $res = mysqli_query($con, $sql);
+
+    // checking if res found or not
+    if(mysqli_num_rows($res) == 0) {
+        die();
+    }
 
     //for final of all products
     $final_price = 0;
@@ -38,20 +48,21 @@
                         <td class="qty">'.$row['qty'].'</td>
                         <td class="price">'.$row['price'].'</td>
                         <td class="total-price">'.$total_price.'</td>
-                    </tr>
-                    <tr id = "price">
+                    </tr>';
+    }
+        $html .=    '<tr id = "price">
                         <td colspan="3"></td>
                         <td class="price-text">Total Price</td>
                         <td class="total-price">'.$final_price.'</td>
-                    </tr>';
-    }
-    $html .= '</tbody>
+                    </tr>
+                </tbody>
             </table>';
 
     $mpdf = new \Mpdf\Mpdf();
     $mpdf->WriteHTML($css, 1);
     $mpdf->WriteHTML($html, 2);
-    $mpdf->Output();
+    $file = time().'.pdf';
+    $mpdf->Output($file, 'D');
 
 ?>
 
