@@ -111,7 +111,7 @@
                                                 }else {
                                                     echo "<span class= 'badge badge-pending button'><a href='?status=active&id=".$row['id']."'>Deactive</a></span>&nbsp";
                                                 }
-                                                echo "<span class= 'badge badge-edit button'><a href='edit_category.php?status=edit&id=".$row['id']."'>Edit</a></span>&nbsp";
+                                                echo "<span class= 'badge badge-edit button'><a href='edit_banner.php?status=edit&id=".$row['id']."'>Edit</a></span>&nbsp";
                                                 echo "<span class= 'badge badge-delete button'><a href='?status=delete&id=".$row['id']."'>Delete</a></span>";
                                             ?></td>
                                         </tr>
