@@ -3,15 +3,15 @@
 
     // Add Category into Database;
     if(isset($_POST['add_banner'])) {
-        // prx($_FILES);
+        //  prx($_FILES);
         // prx($_POST);
         $heading1 = get_safe_value($con, $_POST['heading1']);
         $heading2 = get_safe_value($con, $_POST['heading2']);
         $btn_text = get_safe_value($con, $_POST['btn-text']);
         $btn_link = get_safe_value($con, $_POST['btn-link']);
         $image = get_safe_value($con, $_FILES['image']['name']);
-        $img_tmp = get_safe_value($con, $_FILES['image']['tmp_name']);
-
+        $img_tmp = $_FILES['image']['tmp_name'];
+        // prx($img_tmp);
         // Checking duplicate banner
         $sql_dupli = "SELECT * FROM banner WHERE heading1 = '$heading1' OR heading2 = '$heading2' 
         OR image = '$image'";
@@ -27,6 +27,7 @@
             VALUES('$heading1', '$heading2', '$btn_text', '$btn_link', '$image', '1')";
 
             if(mysqli_query($con, $sql)) {
+                move_uploaded_file($img_tmp, "../media/banner/".$image);
                 $msg = "Successfully added banner";
             }
         }
@@ -41,6 +42,11 @@
                         <div class="card">
                            <div class="card-header"><strong>Banner</strong><small> Form</small></div>
                            <div class="card-body card-block">
+                              <!-- Duplicate Message -->
+                              <div class="form-group field_error">
+                                    <?php if(isset($msg)) {echo $msg;} ?> 
+                               </div>
+
                               <!-- Heading1 -->
                               <div class="form-group">
                                    <label for="heading1" class=" form-control-label">Heading1</label>
@@ -74,11 +80,6 @@
                                <!-- Submit Button -->
                                <div class="form-group">
                                <button class ="btn btn-lg btn-info btn-block" name = "add_banner">Submit</button>
-                               </div>
-
-                               <!-- Duplicate Message -->
-                               <div class="form-group field_error">
-                                    <?php if(isset($msg)) {echo $msg;} ?> 
                                </div>
                            </div>
                         </div>

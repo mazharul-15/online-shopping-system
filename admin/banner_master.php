@@ -2,7 +2,6 @@
     // including header file
     include_once("top.inc.php");
 
-
     // $sql = "SELECT * FROM categories ORDER BY categories desc";
     // $res = mysqli_query($con, $sql);
 
@@ -37,63 +36,41 @@
 
         if($status == 'active') {
 
-            // sql for categories table
-            $sql = "UPDATE categories SET status = 1 WHERE id = $id";
-
-            // sql for sub categories
-            $sql_sub_category = "UPDATE sub_categories SET status = 1 WHERE categories_id = $id";
-            
-            // sql for product table
-            $sql_product = "UPDATE product SET status = 1 WHERE categories_id = $id";
+            // sql for banner table
+            $sql = "UPDATE banner SET status = 1 WHERE id = $id";
 
         } elseif($status == 'deactive') {
 
-            // sql for categories table
-            $sql = "UPDATE categories SET status = 0 WHERE id = $id";
+            // sql for banner table
+            $sql = "UPDATE banner SET status = 0 WHERE id = $id";
 
-            // sql for sub categories
-            $sql_sub_category = "UPDATE sub_categories SET status = 0 WHERE categories_id = $id";
-
-            //sql for product table
-            $sql_product = "UPDATE product SET status = 0 WHERE categories_id = $id";
 
         }elseif($status == 'delete') {
 
-            // sql for categories table
-            $sql = "DELETE FROM categories WHERE id = $id";
+            // sql for banner table
+            $sql = "DELETE FROM banner WHERE id = $id";
 
             // retrive image name for deleting
-            $sql_image = "SELECT product.image FROM product WHERE categories_id = $id";
+            $sql_image = "SELECT image FROM banner WHERE id = $id";
             $res_image = mysqli_query($con, $sql_image);
-            while($row_image = mysqli_fetch_assoc($res_image)) {
-                $image = $row_image['image'];
-                unlink("../media/product/".$image);
-            }
-
-            // sql for sub categories
-            $sql_sub_category = "DELETE FROM sub_categories WHERE categories_id = $id";
-
-            // sql for product table
-            $sql_product ="DELETE FROM product WHERE categories_id = $id";
-
+            $image = mysqli_fetch_assoc($res_image);
+            unlink("../media/banner/".$image);
         }
 
         // sent query to database
-        // DB request to categories table
         mysqli_query($con, $sql);
-
-        // DB request to sub categories table
-        mysqli_query($con, $sql_sub_category);
-
-        // DB request to product table
-        mysqli_query($con, $sql_product);
     }
 
     // sql query for Banner from database
     $sql = "SELECT * FROM banner ORDER BY id desc";
     $res = mysqli_query($con, $sql);
 ?>
-
+<style>
+    .button {
+        display: block;
+        margin: 1px;
+    }
+</style>
 <div class="content pb-0">
     <div class="orders">
         <div class="row">
@@ -127,15 +104,15 @@
                                             <td><?php echo $row['heading2']; ?></td>
                                             <td><?php echo $row['btn_text']; ?></td>
                                             <td><?php echo $row['btn_link']; ?></td>
-                                            <td><img src="../media/<?php echo $row['image']; ?>" alt="banner"></td>
+                                            <td><img src="../media/banner/<?php echo $row['image']; ?>" alt="banner"></td>
                                             <td><?php 
                                                 if($row['status'] == 1) {
-                                                    echo "<span class= 'badge badge-complete'><a href='?status=deactive&id=".$row['id']."'>Active</a></span>&nbsp";
+                                                    echo "<span class= 'badge badge-complete button' ><a href='?status=deactive&id=".$row['id']."'>Active</a></span>&nbsp";
                                                 }else {
-                                                    echo "<span class= 'badge badge-pending'><a href='?status=active&id=".$row['id']."'>Deactive</a></span>&nbsp";
+                                                    echo "<span class= 'badge badge-pending button'><a href='?status=active&id=".$row['id']."'>Deactive</a></span>&nbsp";
                                                 }
-                                                echo "<span class= 'badge badge-edit'><a href='edit_category.php?status=edit&id=".$row['id']."'>Edit</a></span>&nbsp";
-                                                echo "<span class= 'badge badge-delete'><a href='?status=delete&id=".$row['id']."'>Delete</a></span>";
+                                                echo "<span class= 'badge badge-edit button'><a href='edit_category.php?status=edit&id=".$row['id']."'>Edit</a></span>&nbsp";
+                                                echo "<span class= 'badge badge-delete button'><a href='?status=delete&id=".$row['id']."'>Delete</a></span>";
                                             ?></td>
                                         </tr>
                                     <?php } ?>

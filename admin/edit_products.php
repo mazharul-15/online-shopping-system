@@ -48,6 +48,7 @@
 
     // Adding Product to Database
     if(isset($_POST['edit_product'])) {
+      //  prx($_FILES);
       // prx($_POST);
 
         // All values
