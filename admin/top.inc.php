@@ -50,6 +50,10 @@
                   <li class="menu-item-has-children dropdown">
                      <a href="product_master.php">Product Master</a>
                   </li>
+                  <!-- Banner Master -->
+                  <li class="menu-item-has-children dropdown">
+                     <a href="banner_master.php">Banner Master</a>
+                  </li>
                   <!-- order master -->
 				      <li class="menu-item-has-children dropdown">
                      <a href="order_master.php">Order Master</a>

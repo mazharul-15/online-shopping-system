@@ -3,7 +3,7 @@
 
         // adding product
         function addProduct($pid, $qty) {
-            $_SESSION['cart'][$pid]['qty'] = $qty;
+            $_SESSION['cart'][$pid]['qty'] = $qty; 
         }
 
         // update product list
