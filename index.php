@@ -10,12 +10,21 @@
 
     $best_product = get_product($con, 10, '', '', 1, '');
     // prx($best_product);
+
+    // banner image for slider
+    $sql = "SELECT * FROM banner WHERE status = 1";
+    $res = mysqli_query($con, $sql);
 ?>
 
     <div class="body__overlay"></div>
+        <?php
+            if(mysqli_num_rows($res) > 0) {
+        ?>
         <!-- Start Slider Area -->
         <div class="slider__container slider--one bg__cat--3">
             <div class="slide__container slider__activation__wrap owl-carousel">
+                <?php while($row = mysqli_fetch_assoc($res)) {?>
+                    
                 <!-- Start Single Slide -->
                 <div class="single__slide animation__style01 slider__fixed--height">
                     <div class="container">
@@ -33,39 +42,17 @@
                             </div>
                             <div class="col-lg-6 col-sm-5 col-xs-12 col-md-5">
                                 <div class="slide__thumb">
-                                    <img src="images/slider/fornt-img/slider-1.jpg" alt="slider images">
+                                    <img src="media/banner/<?php echo $row['image']; ?>" alt="slider images">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- End Single Slide -->
-                <!-- Start Single Slide -->
-                <div class="single__slide animation__style01 slider__fixed--height">
-                    <div class="container">
-                        <div class="row align-items__center">
-                            <div class="col-md-7 col-sm-7 col-xs-12 col-lg-6">
-                                <div class="slide">
-                                    <div class="slider__inner">
-                                        <h2>collection 2022</h2>
-                                        <h1>NICE Sharee</h1>
-                                        <div class="cr__btn">
-                                            <a href="index.php">Shop Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-5 col-xs-12 col-md-5">
-                                <div class="slide__thumb">
-                                    <img src="images/slider/fornt-img/slider-2.jpg" alt="slider images">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php } ?>
                 <!-- End Single Slide -->
             </div>
         </div>
+        <?php } ?>
         <!-- End Slider Area -->
         <!-- Start Category Area -->
         <section class="htc__category__area ptb--100">
