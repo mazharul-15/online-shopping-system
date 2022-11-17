@@ -11,6 +11,7 @@
         $btn_link = get_safe_value($con, $_POST['btn-link']);
         $image = get_safe_value($con, $_FILES['image']['name']);
         $img_tmp = $_FILES['image']['tmp_name'];
+        $order_no = get_safe_value($con, $_POST['order-no']);
         // prx($img_tmp);
         // Checking duplicate banner
         $sql_dupli = "SELECT * FROM banner WHERE heading1 = '$heading1' OR heading2 = '$heading2' 
@@ -23,8 +24,8 @@
             $msg = "This Banner already exist!!";
 
         }else {
-            $sql = "INSERT INTO banner(heading1, heading2, btn_text, btn_link, image, status) 
-            VALUES('$heading1', '$heading2', '$btn_text', '$btn_link', '$image', '1')";
+            $sql = "INSERT INTO banner(heading1, heading2, btn_text, btn_link, image, order_no status) 
+            VALUES('$heading1', '$heading2', '$btn_text', '$btn_link', '$image', '$order_no', '1')";
 
             if(mysqli_query($con, $sql)) {
                 move_uploaded_file($img_tmp, "../media/banner/".$image);
@@ -75,6 +76,12 @@
                                 <div class="form-group">
                                     <label for="image" class=" form-control-label">Select Image</label>
                                     <input type="file" name="image" id="image" required>
+                                </div>
+
+                                <!-- Banner Order No-->
+                                <div class="form-group">
+                                    <label for="order-no" class=" form-control-label">Order No.</label>
+                                    <input type = "number" name = "order-no" placeholder="Enter banner order no" class="form-control py-4 mb-4 mt-2" required>
                                 </div>
 
                                 <!-- Submit Button -->

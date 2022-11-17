@@ -12,7 +12,7 @@
     // prx($best_product);
 
     // banner image for slider
-    $sql = "SELECT * FROM banner WHERE status = 1";
+    $sql = "SELECT * FROM banner WHERE status = 1 ORDER BY order_no desc";
     $res = mysqli_query($con, $sql);
 ?>
 

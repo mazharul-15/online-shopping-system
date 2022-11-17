@@ -21,6 +21,7 @@
         $btn_text = get_safe_value($con, $_POST['btn-text']);
         $btn_link = get_safe_value($con, $_POST['btn-link']);
         $image = get_safe_value($con, $_FILES['image']['name']);
+        $order_no = get_safe_value($con, $_POST['order-no']);
         $img_tmp = $_FILES['image']['tmp_name'];
         $edit_image = get_safe_value($con, $_POST['edit_image']);
         // prx($img_tmp);
@@ -36,7 +37,8 @@
 
         }else {
             $sql = "UPDATE banner SET heading1 = '$heading1', heading2 = '$heading2', 
-            btn_text = '$btn_text', btn_link = '$btn_link', image = '$image' WHERE id = $id";
+            btn_text = '$btn_text', btn_link = '$btn_link', image = '$image', order_no = '$order_no' 
+            WHERE id = $id";
 
             if(mysqli_query($con, $sql)) {
                 if($edit_image != $image) {
@@ -97,6 +99,12 @@
                                     <img src="../media/banner/<?php echo $row['image']; ?>" alt="Banner Image" style = "width: 250px; height: 150px;">
                                     <label for="image" class=" form-control-label">Select new Image</label>
                                     <input type="file" name="image" id="image" required>
+                                </div>
+
+                                <!-- Banner Order No-->
+                                <div class="form-group">
+                                    <label for="order-no" class=" form-control-label">Order No.</label>
+                                    <input type = "number" name = "order-no" value = "<?php echo $row['order_no'];?>" class="form-control py-4 mb-4 mt-2" required>
                                 </div>
 
                                 <!-- Submit Button -->
